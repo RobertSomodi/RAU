@@ -16,6 +16,7 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  SIGN_IN_SUCCESS,
 } from './constants';
 
 // The initial state of the App
@@ -26,6 +27,7 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  auth_user: JSON.parse(localStorage.getItem('userInfo')) || null
 });
 
 function appReducer(state = initialState, action) {
@@ -44,6 +46,8 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case SIGN_IN_SUCCESS:
+      return state.set('auth_user', action.user);
     default:
       return state;
   }

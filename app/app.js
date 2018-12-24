@@ -16,6 +16,9 @@ import { ConnectedRouter } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
+/* eslint-disable import/extensions */
+import 'typeface-roboto';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 // Import root app
 import App from 'containers/App';
@@ -28,6 +31,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 // Import CSS reset and Global Styles
 import 'styles/theme.scss';
 
+import { theme } from './utils/theme';
 import configureStore from './configureStore';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -35,11 +39,14 @@ import configureStore from './configureStore';
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-}, () => {
-  document.body.classList.remove('fontLoaded');
-});
+openSansObserver.load().then(
+  () => {
+    document.body.classList.add('fontLoaded');
+  },
+  () => {
+    document.body.classList.remove('fontLoaded');
+  }
+);
 
 // Create redux store with history
 const initialState = {};
@@ -49,13 +56,15 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
-      {/* <LanguageProvider messages={messages}> */}
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-      {/* </LanguageProvider> */}
-    </Provider>,
+    <MuiThemeProvider theme={theme}>
+      <Provider store={store}>
+        {/* <LanguageProvider messages={messages}> */}
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+        {/* </LanguageProvider> */}
+      </Provider>
+    </MuiThemeProvider>,
     MOUNT_NODE
   );
 };

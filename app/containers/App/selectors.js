@@ -33,6 +33,11 @@ const makeSelectLocation = () => createSelector(
   (routeState) => routeState.get('location').toJS()
 );
 
+const makeSelectAuthUser = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('auth_user')
+);
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -40,4 +45,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectAuthUser
 };
