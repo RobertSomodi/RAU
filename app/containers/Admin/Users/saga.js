@@ -7,8 +7,6 @@ import request from 'utils/request';
 import { makeSelectAuthUser } from 'containers/App/selectors';
 
 import { SIGN_IN } from './constants';
-import { signInSuccess } from '../App/actions';
-import { signInError } from './actions';
 
 
 /**
@@ -16,21 +14,21 @@ import { signInError } from './actions';
  */
 export function* signIn() {
   // Select username from store
-  const user = yield select(makeSelectUser());
-  const requestURL = 'http://localhost:8080/login';
-  const requestOptions = {
-    method: 'POST',
-    body: JSON.stringify(user),
-    headers: { 'Content-Type': 'application/json' }
-  };
+  // const user = yield select(makeSelectUser());
+  // const requestURL = 'http://localhost:8080/login';
+  // const requestOptions = {
+  //   method: 'POST',
+  //   body: JSON.stringify(user),
+  //   headers: { 'Content-Type': 'application/json' }
+  // };
 
-  try {
-    // Call our request helper (see 'utils/request')
-    const authUser = yield call(request, requestURL, requestOptions);
-    yield put(signInSuccess(authUser));
-  } catch (err) {
-    yield put(signInError(err));
-  }
+  // try {
+  //   // Call our request helper (see 'utils/request')
+  //   const authUser = yield call(request, requestURL, requestOptions);
+  //   yield put(signInSuccess(authUser));
+  // } catch (err) {
+  //   yield put(signInError(err));
+  // }
 }
 
 /**

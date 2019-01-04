@@ -14,7 +14,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import DashboardPage from 'containers/DashboardPage';
-// import UserPage from 'containers/Admin/UsersPage';
+import Users from 'containers/Admin/Users';
 import ManageUser from 'containers/Admin/ManageUser';
 import { styles } from './styles';
 
@@ -60,7 +60,7 @@ class Admin extends React.PureComponent {
           <div className={classes.appBarSpacer} />
           <Switch>
             <Route exact path={`${path}`} component={DashboardPage} />
-            <Route path={`${path}/users`} component={ManageUser} />
+            <Route path={`${path}/users`} component={Users} />
             <Route path={`${path}/user`} component={ManageUser} />
             <Route path={`${path}/user:id`} component={ManageUser} />
           </Switch>

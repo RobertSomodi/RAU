@@ -10,9 +10,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { toolbarStyles } from './toolbarStyles';
 
-let EnhancedTableToolbar = (props) => {
+const EnhancedTableToolbar = (props) => {
   const { numSelected, classes } = props;
-
   return (
     <Toolbar
       className={classNames(classes.root, {
@@ -55,4 +54,5 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
+export default withStyles(toolbarStyles)(EnhancedTableToolbar);
+

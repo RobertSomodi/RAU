@@ -6,7 +6,7 @@ import injectSaga from 'utils/injectSaga';
 import { makeSelectLoading, makeSelectAuthUser } from 'containers/App/selectors';
 import reducer from './reducer';
 import saga from './saga';
-import UsersPage from './UsersPage';
+import Users from './Users';
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
@@ -21,5 +21,5 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'users', reducer });
 const withSaga = injectSaga({ key: 'users', saga });
 
-export default compose(withReducer, withSaga, withConnect)(UsersPage);
+export default compose(withReducer, withSaga, withConnect)(Users);
 export { mapDispatchToProps };
