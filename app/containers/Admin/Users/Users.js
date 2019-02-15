@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import EnhancedTable from 'components/EnhancedTable';
+import TableButtons from 'components/TableButtons';
 
 export default class Users extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -34,23 +35,26 @@ export default class Users extends React.PureComponent {
         <EnhancedTable
           initialData={
             [
-              ['Cupcake', 305, 3.7, 67, 4.3]
+              ['Somodi', 'Robert', 'somodirobert24@gmail.com', 'Department Manager', 'Food', <TableButtons key={123} />]
             ]
           }
           rows={[{
-            id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)'
+            id: 'first_name', numeric: false, disablePadding: false, label: 'First name'
           },
           {
-            id: 'calories', numeric: true, disablePadding: false, label: 'Calories'
+            id: 'last_name', numeric: false, disablePadding: false, label: 'Last name'
           },
           {
-            id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)'
+            id: 'email', numeric: false, disablePadding: false, label: 'Email'
           },
           {
-            id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)'
+            id: 'position', numeric: false, disablePadding: false, label: 'Position'
           },
           {
-            id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)'
+            id: 'department', numeric: false, disablePadding: false, label: 'Department'
+          },
+          {
+            id: 'actions', numeric: false, disablePadding: false, label: 'Actions'
           }]}
         />
 

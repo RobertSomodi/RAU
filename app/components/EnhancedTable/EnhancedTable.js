@@ -17,7 +17,8 @@ let counter = 0;
 function createData(rowData) {
   counter += 1;
   return {
-    id: { counter, ...rowData }
+    id: `row-${counter}`,
+    attr: { ...rowData }
   };
 }
 
@@ -109,6 +110,7 @@ class EnhancedTable extends React.Component {
 
   isSelected = (id) => this.state.selected.indexOf(id) !== -1;
 
+  renderAttr = (row) => Object.keys(row.attr).map((key) => <TableCell key={`cell-${row.id}-${key}`} align="right">{row.attr[key]}</TableCell>);
   render() {
     const { classes } = this.props;
     const {
@@ -148,13 +150,7 @@ class EnhancedTable extends React.Component {
                       <TableCell padding="checkbox">
                         <Checkbox checked={isSelected} />
                       </TableCell>
-                      <TableCell component="th" scope="row" padding="none">
-                        {n.name}
-                      </TableCell>
-                      <TableCell align="right">{n.calories}</TableCell>
-                      <TableCell align="right">{n.fat}</TableCell>
-                      <TableCell align="right">{n.carbs}</TableCell>
-                      <TableCell align="right">{n.protein}</TableCell>
+                      {this.renderAttr(n)}
                     </TableRow>
                   );
                 })}

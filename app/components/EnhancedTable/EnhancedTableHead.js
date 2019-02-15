@@ -64,6 +64,6 @@ EnhancedTableHead.propTypes = {
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
-  rows: PropTypes.object
+  rows: PropTypes.array
 };
 
