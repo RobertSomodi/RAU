@@ -4,11 +4,16 @@
 
 import { createSelector } from 'reselect';
 
-const selectAuth = (state) => state.get('auth');
+const selectAuth = (state) => state.get('admin');
 
 const makeSelectUser = () => createSelector(
   selectAuth,
   (authState) => authState.get('user_credentials')
+);
+
+const makeSelectMenuState = () => createSelector(
+  selectAuth,
+  (authState) => authState.get('menu_state')
 );
 
 const makeSelectAuthUser = () => createSelector(
@@ -19,5 +24,6 @@ const makeSelectAuthUser = () => createSelector(
 export {
   selectAuth,
   makeSelectUser,
-  makeSelectAuthUser
+  makeSelectAuthUser,
+  makeSelectMenuState
 };

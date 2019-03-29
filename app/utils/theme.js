@@ -9,5 +9,8 @@ export const theme = createMuiTheme({
     danger: red.A100,
     info: blue,
     success: teal[500]
+  },
+  typography: {
+    useNextVariants: true,
   }
 });

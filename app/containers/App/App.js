@@ -14,8 +14,10 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import AuthPage from 'containers/AuthPage/Loadable';
 import Admin from 'containers/Admin/Loadable';
+import Unauthorized from 'components/Unauthorized';
+
 import authenticate from 'containers/Authenticate/index';
-import './style.scss';
+
 
 const App = () => (
   <div className="app-wrapper">
@@ -27,9 +29,11 @@ const App = () => (
     </Helmet>
     <Switch>
       <Route exact path="/" component={authenticate(HomePage, 'user')} />
+      <Route path="/unauthorized" component={Unauthorized} />
       <Route path="/authentication" component={AuthPage} />
       <Route path="/admin" component={authenticate(Admin, 'admin')} />
       <Route path="" component={NotFoundPage} />
+
     </Switch>
   </div>
 );

@@ -2,7 +2,8 @@
 import {
   SIGN_IN_ERROR,
   SIGN_IN,
-  CHANGE_USER_CREDENTIALS
+  CHANGE_USER_CREDENTIALS,
+  UPDATE_MENU
 } from './constants';
 
 export function onChangeUserCredentials(user) {
@@ -16,6 +17,13 @@ export function signIn(user) {
   return {
     type: SIGN_IN,
     user
+  };
+}
+
+export function updateMenu(id) {
+  return {
+    type: UPDATE_MENU,
+    id
   };
 }
 

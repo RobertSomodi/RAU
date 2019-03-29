@@ -30,10 +30,11 @@ class Admin extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      open: true
+      open: true,
     };
     this.handleDrawerState = this.handleDrawerState.bind(this);
     this.handleRouteChange = this.handleRouteChange.bind(this);
+    this.handleSubmenuState = this.handleSubmenuState.bind(this);
   }
 
   handleDrawerState() {
@@ -42,6 +43,10 @@ class Admin extends React.PureComponent {
 
   handleRouteChange(route) {
     this.context.router.history.push(`${this.props.match.path}/${route}`);
+  }
+
+  handleSubmenuState(id) {
+    this.props.updateMenu(id);
   }
 
   render() {
@@ -55,7 +60,15 @@ class Admin extends React.PureComponent {
         </Helmet>
         <CssBaseline />
         <AppBar open={this.state.open} handleDrawerState={this.handleDrawerState}></AppBar>
-        <Drawer open={this.state.open} handleDrawerState={this.handleDrawerState} handleRouteChange={this.handleRouteChange}></Drawer>
+        <Drawer
+          userRole="admin"
+          open={this.state.open}
+          handleDrawerState={this.handleDrawerState}
+          handleRouteChange={this.handleRouteChange}
+          handleSubmenuState={this.handleSubmenuState}
+          submenuState={this.props.menu_state}
+        >
+        </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Switch>
@@ -72,7 +85,9 @@ class Admin extends React.PureComponent {
 
 Admin.propTypes = {
   classes: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  updateMenu: PropTypes.func.isRequired,
+  menu_state: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Admin);

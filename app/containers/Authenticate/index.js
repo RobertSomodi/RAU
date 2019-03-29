@@ -39,9 +39,9 @@ export default function (ComposedComponent, role) {
     }
     render() {
       return (
-        <div>
+        <React.Fragment>
           { this.props.authUser ? <ComposedComponent {...this.props} /> : null }
-        </div>
+        </React.Fragment>
       );
     }
   }

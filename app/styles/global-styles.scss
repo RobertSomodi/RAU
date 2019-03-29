@@ -17,7 +17,9 @@ body.fontLoaded {
   min-height: 100%;
   min-width: 100%;
 }
-
+.app-wrapper {
+  height:100vh;
+}
 p,
 label {
   font-family: Georgia, Times, 'Times New Roman', serif;

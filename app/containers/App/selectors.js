@@ -5,7 +5,6 @@
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
-
 const selectRoute = (state) => state.get('route');
 
 const makeSelectCurrentUser = () => createSelector(
@@ -35,7 +34,7 @@ const makeSelectLocation = () => createSelector(
 
 const makeSelectAuthUser = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.get('auth_user')
+  (globalState) => ([...globalState.get('auth_user').entries()].reduce((obj, [key, value]) => (obj[key] = value, obj), {}))
 );
 
 export {

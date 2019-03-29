@@ -43,4 +43,17 @@ export const styles = (theme) => ({
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
+  menuWrapTop: {
+    flex: '1 1 auto'
+  },
+  menuWrapBottom: {
+    flex: '0 1 auto'
+  },
+  collapse: {
+    backgroundColor: 'rgba(0,0,0,0.12)'
+  },
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0
+  }
 });
