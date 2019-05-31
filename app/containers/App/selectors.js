@@ -34,7 +34,7 @@ const makeSelectLocation = () => createSelector(
 
 const makeSelectAuthUser = () => createSelector(
   selectGlobal,
-  (globalState) => ([...globalState.get('auth_user').entries()].reduce((obj, [key, value]) => (obj[key] = value, obj), {}))
+  (globalState) => (globalState.get('auth_user'))
 );
 
 export {

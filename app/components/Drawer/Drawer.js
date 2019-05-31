@@ -24,7 +24,6 @@ import { styles } from './styles';
 class DrawerNav extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.submenuState);
   }
 
 
@@ -33,25 +32,25 @@ class DrawerNav extends React.Component {
       if (item.submenu) {
         return (
           <React.Fragment>
-            <ListItem key={item.order + item.name} button onClick={() => (this.props.handleSubmenuState(item.order))}>
+            <ListItem key={item.order + item.name} button onClick={() => (this.props.handleSubmenuState(item.id))}>
               {(item.icon) && (
                 <ListItemIcon>
                   <Icon>{item.icon}</Icon>
                 </ListItemIcon>)}
 
               <ListItemText inset primary={item.name} />
-              {this.props.submenuState[item.order] ? <ExpandLess /> : <ExpandMore />}
+              {this.props.menuState[item.id] ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse className={this.props.classes.collapse} in={this.props.submenuState[item.order]} timeout="auto" unmountOnExit>
+            <Collapse className={this.props.classes.collapse} in={this.props.menuState[item.id]} timeout="auto" unmountOnExit>
               <List className={this.props.classes.list}>
-                {this.buildMenu(item.submenu.sort((itemA, itemB) => (itemA - itemB)))}
+                {this.buildMenu(item.submenu.sort((itemA, itemB) => (itemA - itemB)), item.id)}
               </List>
             </Collapse>
           </React.Fragment>
         );
       }
       return (
-        <ListItem key={item.order + item.name} button onClick={() => (this.props.handleRouteChange('users'))}>
+        <ListItem key={item.order + item.name} button onClick={() => (this.props.handleRouteChange(item.path, item.id))}>
           {(item.icon) && (
             <ListItemIcon>
               <Icon>{item.icon}</Icon>
@@ -88,13 +87,13 @@ class DrawerNav extends React.Component {
               <ChevronLeftIcon />
             </IconButton>
           </div>
-          <div className={classes.menuWrapTop}>
+          <div key={'topmenu'} className={classes.menuWrapTop}>
             <Divider />
             <List>
               {this.buildMenu(upperMenu)}
             </List>
           </div>
-          <div className={classes.menuWrapBottom}>
+          <div key={'bottommenu'} className={classes.menuWrapBottom}>
             <Divider />
             <List>
               {this.buildMenu(lowerMenu)}
@@ -113,7 +112,7 @@ DrawerNav.propTypes = {
   handleRouteChange: PropTypes.func.isRequired,
   userRole: PropTypes.string.isRequired,
   handleSubmenuState: PropTypes.func.isRequired,
-  submenuState: PropTypes.object.isRequired
+  menuState: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DrawerNav);

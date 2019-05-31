@@ -17,6 +17,7 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
   SIGN_IN_SUCCESS,
+  LOGOUT,
 } from './constants';
 
 // The initial state of the App
@@ -48,6 +49,8 @@ function appReducer(state = initialState, action) {
         .set('loading', false);
     case SIGN_IN_SUCCESS:
       return state.set('auth_user', action.user);
+    case LOGOUT:
+      return state.set('auth_user', null);
     default:
       return state;
   }

@@ -3,22 +3,20 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { makeSelectLoading, makeSelectAuthUser } from 'containers/App/selectors';
 import reducer from './reducer';
 import saga from './saga';
-import Users from './Users';
+import SchedulePage from './SchedulePage';
 
 const mapStateToProps = createStructuredSelector({
-  loading: makeSelectLoading(),
-  auth_user: makeSelectAuthUser()
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = () => ({
+});
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'users', reducer });
-const withSaga = injectSaga({ key: 'users', saga });
+const withReducer = injectReducer({ key: 'schedule', reducer });
+const withSaga = injectSaga({ key: 'schedule', saga });
 
-export default compose(withReducer, withSaga, withConnect)(Users);
+export default compose(withReducer, withSaga, withConnect)(SchedulePage);
 export { mapDispatchToProps };

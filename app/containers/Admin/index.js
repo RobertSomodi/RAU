@@ -4,20 +4,21 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectLoading, makeSelectAuthUser } from 'containers/App/selectors';
-import { makeSelectMenuState } from './selectors';
-import { updateMenu } from './actions';
+import { logout } from 'containers/App/actions';
 import reducer from './reducer';
 import saga from './saga';
 import Admin from './Admin';
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
-  auth_user: makeSelectAuthUser(),
-  menu_state: makeSelectMenuState()
+  auth_user: makeSelectAuthUser()
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateMenu: (id) => dispatch(updateMenu(id))
+  logout: () => (new Promise((resolve, reject) => {
+    dispatch(logout());
+    resolve();
+  }))
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

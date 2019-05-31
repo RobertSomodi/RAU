@@ -19,7 +19,8 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-  SIGN_IN_SUCCESS
+  SIGN_IN_SUCCESS,
+  LOGOUT
 } from './constants';
 
 
@@ -76,4 +77,8 @@ export function repoLoadingError(error) {
     type: LOAD_REPOS_ERROR,
     error,
   };
+}
+
+export function logout() {
+  return { type: LOGOUT };
 }

@@ -15,6 +15,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import DashboardPage from 'containers/DashboardPage';
 import Users from 'containers/Admin/Users';
+import Schedule from 'containers/Schedule';
 import ManageUser from 'containers/Admin/ManageUser';
 import { styles } from './styles';
 
@@ -31,6 +32,7 @@ class Admin extends React.PureComponent {
     super(props);
     this.state = {
       open: true,
+      menu_state: {}
     };
     this.handleDrawerState = this.handleDrawerState.bind(this);
     this.handleRouteChange = this.handleRouteChange.bind(this);
@@ -42,11 +44,21 @@ class Admin extends React.PureComponent {
   }
 
   handleRouteChange(route) {
-    this.context.router.history.push(`${this.props.match.path}/${route}`);
+    if (route === 'logout') {
+      this.props.logout().then(() => {
+        localStorage.removeItem('userInfo');
+        this.context.router.route.location = '/';
+        this.context.router.history.push('/authentication');
+      });
+    } else {
+      this.context.router.history.push(`${this.props.match.path}/${route}`);
+    }
   }
 
   handleSubmenuState(id) {
-    this.props.updateMenu(id);
+    const clone = Object.assign({}, this.state.menu_state);
+    clone[id] = !clone[id];
+    this.setState({ menu_state: clone });
   }
 
   render() {
@@ -66,7 +78,7 @@ class Admin extends React.PureComponent {
           handleDrawerState={this.handleDrawerState}
           handleRouteChange={this.handleRouteChange}
           handleSubmenuState={this.handleSubmenuState}
-          submenuState={this.props.menu_state}
+          menuState={this.state.menu_state}
         >
         </Drawer>
         <main className={classes.content}>
@@ -76,6 +88,7 @@ class Admin extends React.PureComponent {
             <Route path={`${path}/users`} component={Users} />
             <Route path={`${path}/user`} component={ManageUser} />
             <Route path={`${path}/user:id`} component={ManageUser} />
+            <Route path={`${path}/schedule`} component={Schedule} />
           </Switch>
         </main>
       </div>
@@ -86,8 +99,7 @@ class Admin extends React.PureComponent {
 Admin.propTypes = {
   classes: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  updateMenu: PropTypes.func.isRequired,
-  menu_state: PropTypes.object.isRequired
+  logout: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Admin);

@@ -7,11 +7,10 @@ const initialState = fromJS({
   user_credentials: {
     email: '',
     password: ''
-  },
-  menu_state: {}
+  }
 });
 
-function authReducer(state = initialState, action) {
+function scheduleReducer(state = initialState, action) {
   switch (action.type) {
     case SIGN_IN:
       return state
@@ -29,4 +28,4 @@ function authReducer(state = initialState, action) {
   }
 }
 
-export default authReducer;
+export default scheduleReducer;

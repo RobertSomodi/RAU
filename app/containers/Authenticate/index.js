@@ -30,10 +30,10 @@ export default function (ComposedComponent, role) {
 
     checkAndRedirect() {
       const { authUser, redirect, unauthorized } = this.props;
+      console.log(authUser);
       if (!authUser) {
         redirect();
-      } else if (authUser.role !== role) {
-        console.log(role);
+      } else if (authUser.get('role') !== role) {
         unauthorized();
       }
     }
