@@ -1,5 +1,7 @@
-export const SIGN_IN = 'boilerplate/Auth/SIGN_IN';
-export const SIGN_IN_SUCCESS = 'boilerplate/Auth/SIGN_IN_SUCCESS';
-export const SIGN_IN_ERROR = 'boilerplate/Auth/SIGN_IN_ERROR';
+export const GET_USERS = 'boilerplate/users/GET_USERS';
+export const GET_USERS_SUCCESS = 'boilerplate/users/GET_USERS_SUCCESS';
+export const GET_USERS_ERROR = 'boilerplate/users/GET_USERS_ERROR';
 
-export const CHANGE_USER_CREDENTIALS = 'boilerplate/Auth/CHANGE_USER_CREDENTIALS';
+export const ON_DELETE = 'boilerplate/users/ON_DELETE';
+export const ON_DELETE_SUCCESS = 'boilerplate/users/ON_DELETE_SUCCESS';
+export const ON_DELETE_ERROR = 'boilerplate/users/ON_DELETE_ERROR';

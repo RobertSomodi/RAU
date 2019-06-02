@@ -120,7 +120,7 @@ class EnhancedTable extends React.Component {
 
     return (
       <Paper className={classes.root}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} tableName={this.props.tableName} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
             <EnhancedTableHead
@@ -185,7 +185,8 @@ class EnhancedTable extends React.Component {
 EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
   rows: PropTypes.array.isRequired,
-  initialData: PropTypes.array.isRequired
+  initialData: PropTypes.array.isRequired,
+  tableName: PropTypes.string.isRequired
 };
 
 

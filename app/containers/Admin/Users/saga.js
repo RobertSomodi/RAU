@@ -2,42 +2,56 @@
  * Gets the repositories of the user from Github
  */
 
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest, all } from 'redux-saga/effects';
 import request from 'utils/request';
 import { makeSelectAuthUser } from 'containers/App/selectors';
-
-import { SIGN_IN } from './constants';
+import { getUsersSuccess, getUsersError, onDeleteSuccess, onDeleteError } from './actions';
+import { SIGN_IN, GET_USERS, ON_DELETE } from './constants';
 
 
 /**
  * Github repos request/response handler
  */
-export function* signIn() {
-  // Select username from store
-  // const user = yield select(makeSelectUser());
-  // const requestURL = 'http://localhost:8080/login';
-  // const requestOptions = {
-  //   method: 'POST',
-  //   body: JSON.stringify(user),
-  //   headers: { 'Content-Type': 'application/json' }
-  // };
+export function* getUsers() {
+  const user = yield select(makeSelectAuthUser());
+  const filters = `${user.data.storeId}/${user.data.departmentId}`;
+  const requestURL = `http://localhost:9890/secureApi/user/all/${filters}`;
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'Token': user.token }
+  };
 
-  // try {
-  //   // Call our request helper (see 'utils/request')
-  //   const authUser = yield call(request, requestURL, requestOptions);
-  //   yield put(signInSuccess(authUser));
-  // } catch (err) {
-  //   yield put(signInError(err));
-  // }
+  try {
+    // Call our request helper (see 'utils/request')
+    const users = yield call(request, requestURL, requestOptions);
+    yield put(getUsersSuccess(users));
+  } catch (err) {
+    yield put(getUsersError(err));
+  }
 }
 
-/**
- * Root saga manages watcher lifecycle
- */
-export default function* signInData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
-  yield takeLatest(SIGN_IN, signIn);
+export function* deleteUser(data) {
+  const user = yield select(makeSelectAuthUser());
+
+  const requestURL = `http://localhost:9890/secureApi/user/${data.id}`;
+  const requestOptions = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 'Token': user.token }
+  };
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const data = yield call(request, requestURL, requestOptions);
+    yield put(onDeleteSuccess(data));
+  } catch (err) {
+    yield put(onDeleteError(err));
+  }
+}
+
+
+export default function* watchAll() {
+  yield all([
+    takeLatest(GET_USERS, getUsers),
+    takeLatest(ON_DELETE, deleteUser)
+  ]);
 }

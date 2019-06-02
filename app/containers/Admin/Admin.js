@@ -15,8 +15,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import DashboardPage from 'containers/DashboardPage';
 import Users from 'containers/Admin/Users';
+import Stores from 'containers/Admin/Stores';
+import Positions from 'containers/Admin/Positions';
 import Schedule from 'containers/Schedule';
 import ManageUser from 'containers/Admin/ManageUser';
+import ManageStore from 'containers/Admin/ManageStore';
+import ManagePosition from 'containers/Admin/ManagePosition';
 import { styles } from './styles';
 
 class Admin extends React.PureComponent {
@@ -37,6 +41,11 @@ class Admin extends React.PureComponent {
     this.handleDrawerState = this.handleDrawerState.bind(this);
     this.handleRouteChange = this.handleRouteChange.bind(this);
     this.handleSubmenuState = this.handleSubmenuState.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.props.getInfo();
+    // this.forceUpdate();
   }
 
   handleDrawerState() {
@@ -85,9 +94,18 @@ class Admin extends React.PureComponent {
           <div className={classes.appBarSpacer} />
           <Switch>
             <Route exact path={`${path}`} component={DashboardPage} />
-            <Route path={`${path}/users`} component={Users} />
-            <Route path={`${path}/user`} component={ManageUser} />
-            <Route path={`${path}/user:id`} component={ManageUser} />
+            <Route exact path={`${path}/users`} component={Users} />
+            <Route path={`${path}/users/add/`} component={ManageUser} />
+            <Route path={`${path}/users/edit/:id`} component={ManageUser} />
+            <Route path={`${path}/users/view/:id`} component={ManageUser} />
+            <Route exact path={`${path}/stores`} component={Stores} />
+            <Route path={`${path}/stores/add/`} component={ManageStore} />
+            <Route path={`${path}/stores/edit/:id`} component={ManageStore} />
+            <Route path={`${path}/stores/view/:id`} component={ManageStore} />
+            <Route exact path={`${path}/positions`} component={Positions} />
+            <Route path={`${path}/positions/add/`} component={ManagePosition} />
+            <Route path={`${path}/positions/edit/:id`} component={ManagePosition} />
+            <Route path={`${path}/positions/view/:id`} component={ManagePosition} />
             <Route path={`${path}/schedule`} component={Schedule} />
           </Switch>
         </main>
@@ -99,7 +117,8 @@ class Admin extends React.PureComponent {
 Admin.propTypes = {
   classes: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  getInfo: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Admin);

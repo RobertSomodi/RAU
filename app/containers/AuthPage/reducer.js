@@ -5,7 +5,7 @@ import { SIGN_IN, SIGN_IN_ERROR, CHANGE_USER_CREDENTIALS } from './constants';
 // The initial state of the App
 const initialState = fromJS({
   user_credentials: {
-    email: '',
+    username: '',
     password: ''
   }
 });

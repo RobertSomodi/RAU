@@ -5,6 +5,8 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectLoading, makeSelectAuthUser } from 'containers/App/selectors';
 import { logout } from 'containers/App/actions';
+import { getInfo } from './actions';
+import { makeSelectInfo } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import Admin from './Admin';
@@ -17,6 +19,10 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   logout: () => (new Promise((resolve, reject) => {
     dispatch(logout());
+    resolve();
+  })),
+  getInfo: () => (new Promise((resolve, reject) => {
+    dispatch(getInfo());
     resolve();
   }))
 });

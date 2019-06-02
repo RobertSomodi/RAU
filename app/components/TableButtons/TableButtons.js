@@ -12,17 +12,21 @@ import { styles } from './styles';
 const TableButtons = (props) => {
   const {
     classes,
+    onDelete,
+    onEdit,
+    onView,
+    objectId
   } = props;
 
   return (
     <React.Fragment>
-      <IconButton className={classes.button} aria-label="View">
+      <IconButton className={classes.button} aria-label="View" onClick={()=>{onView(objectId)}}>
         <InfoIcon />
       </IconButton>
-      <IconButton className={classes.button} aria-label="Edit">
+      <IconButton className={classes.button} aria-label="Edit" onClick={()=>{onEdit(objectId)}}>
         <EditIcon />
       </IconButton>
-      <IconButton className={classes.button} aria-label="Delete">
+      <IconButton className={classes.button} aria-label="Delete" onClick={()=>{onDelete(objectId)}}>
         <DeleteIcon />
       </IconButton>
     </React.Fragment>
@@ -31,6 +35,10 @@ const TableButtons = (props) => {
 
 TableButtons.propTypes = {
   classes: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onView: PropTypes.func.isRequired,
+  objectId: PropTypes.number
 };
 
 export default withStyles(styles)(TableButtons);

@@ -11,7 +11,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { toolbarStyles } from './toolbarStyles';
 
 const EnhancedTableToolbar = (props) => {
-  const { numSelected, classes } = props;
+  const { numSelected, classes, tableName } = props;
   return (
     <Toolbar
       className={classNames(classes.root, {
@@ -25,7 +25,7 @@ const EnhancedTableToolbar = (props) => {
           </Typography>
         ) : (
           <Typography variant="h6" id="tableTitle">
-              Nutrition
+              {tableName}
           </Typography>
         )}
       </div>
@@ -52,6 +52,7 @@ const EnhancedTableToolbar = (props) => {
 EnhancedTableToolbar.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
+  tableName: PropTypes.string
 };
 
 export default withStyles(toolbarStyles)(EnhancedTableToolbar);

@@ -2,7 +2,10 @@
 import {
   SIGN_IN_ERROR,
   SIGN_IN,
-  CHANGE_USER_CREDENTIALS
+  CHANGE_USER_CREDENTIALS,
+  GET_INFO,
+  GET_INFO_SUCCESS,
+  GET_INFO_ERROR
 } from './constants';
 
 export function onChangeUserCredentials(user) {
@@ -30,6 +33,26 @@ export function signInError(error) {
   return {
     type: SIGN_IN_ERROR,
     error,
+  };
+}
+
+export function getInfo() {
+  return {
+    type: GET_INFO,
+  };
+}
+
+export function getInfoError() {
+  return {
+    type: GET_INFO_ERROR,
+    error
+  };
+}
+
+export function getInfoSuccess(info) {
+  return {
+    type: GET_INFO_SUCCESS,
+    info
   };
 }
 

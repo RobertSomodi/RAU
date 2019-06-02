@@ -16,18 +16,25 @@ export const adminMenu = [
     id: 1,
     submenu: [
       {
-        name: 'User',
-        path: 'user',
-        order: 0,
-        icon: 'chevron_right',
-        id: 10
-      },
-      {
         name: 'Users',
         path: 'users',
         order: 1,
         icon: 'chevron_right',
         id: 11
+      },
+      {
+        name: 'Stores',
+        path: 'stores',
+        order: 2,
+        icon: 'chevron_right',
+        id: 12
+      },
+      {
+        name: 'Positions',
+        path: 'positions',
+        order: 3,
+        icon: 'chevron_right',
+        id: 13
       }
     ]
   },

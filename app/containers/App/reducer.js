@@ -48,7 +48,7 @@ function appReducer(state = initialState, action) {
         .set('error', action.error)
         .set('loading', false);
     case SIGN_IN_SUCCESS:
-      return state.set('auth_user', action.user);
+      return state.set('auth_user', fromJS(action.user));
     case LOGOUT:
       return state.set('auth_user', null);
     default:

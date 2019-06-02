@@ -3,17 +3,42 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { signUp, onUserDetailsChange } from './actions';
+import { onEdit, onAdd, onUserDetailsChange, getUserById, getDepartmentsByStoreId, getTeamsByDepartmentId } from './actions';
+import { makeSelectUser, makeSelectDepartments, makeSelectTeams } from './selectors';
+import { makeSelectInfo } from 'containers/Admin/selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ManageUser from './ManageUser';
 
-const mapStateToProps = createStructuredSelector({
+const mapDispatchToProps = (dispatch) => ({
+  onEdit: () => (new Promise((resolve, reject) => {
+    dispatch(onEdit());
+    setTimeout(() => {resolve()}, 2000);
+  })),
+  onAdd: () => (new Promise((resolve, reject) => {
+    dispatch(onAdd());
+    setTimeout(() => {resolve()}, 2000);
+  })),
+  onUserDetailsChange: (user) => { dispatch(onUserDetailsChange(user)); },
+  getUserById: (id) => (new Promise((resolve, reject) => {
+    dispatch(getUserById(id));
+    resolve();
+  })),
+  getDepartmentsByStoreId: (id) => (new Promise((resolve, reject) => {
+    dispatch(getDepartmentsByStoreId(id));
+    resolve();
+  })),
+  getTeamsByDepartmentId: (id) => (new Promise((resolve, reject) => {
+    dispatch(getTeamsByDepartmentId(id));
+    resolve();
+  }))
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSave: () => dispatch(signUp()),
-  onUserDetailsChange: (user) => { dispatch(onUserDetailsChange(user)); }
+const mapStateToProps = createStructuredSelector({
+  user: makeSelectUser(),
+  departments: makeSelectDepartments(),
+  teams: makeSelectTeams(),
+  info: makeSelectInfo(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

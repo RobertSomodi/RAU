@@ -32,11 +32,11 @@ const Authentication = (props) => {
         </Typography>
         <form className={classes.form} onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email Address</InputLabel>
+            <InputLabel htmlFor="username">Email Address</InputLabel>
             <Input
-              id="email"
-              name="email"
-              autoComplete="email"
+              id="username"
+              name="username"
+              autoComplete="username"
               autoFocus
               value={loginDetails.email}
               onChange={handleChange}

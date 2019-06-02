@@ -22,23 +22,62 @@ export default class ManageUser extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      userDetails: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-        role: ''
-      }
+      edit: 'view'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
-  componentDidMount() {}
+  async componentWillMount() { 
+    if(this.props.match.path.indexOf('edit') != -1) {
+      this.setState({action:'edit'}); 
+    }
+    if(this.props.match.path.indexOf('add') != -1) {
+      this.setState({action:'add'}); 
+    }
+    if(this.props.match.path.indexOf('view') != -1) {
+      this.setState({action:'view'}); 
+    }
+    if(this.state.action != 'add') {
+      await this.props.getUserById(this.props.match.params.id);
+    }
+  }
 
-  handleChange = (event) => {
-    const userDetails = Object.assign({}, this.state.userDetails);
+  async componentDidUpdate(prevProps) {
+    if(this.props.user.storeId && prevProps.user.storeId != this.props.user.storeId) {
+      await this.props.getDepartmentsByStoreId(this.props.user.storeId);
+    }
+    if(this.props.user.departmentId && prevProps.user.departmentId != this.props.user.departmentId) {
+      await this.props.getTeamsByDepartmentId(this.props.user.departmentId);
+    }
+  }
+
+  handleChange = async (event) => {
+    const userDetails = Object.assign({}, this.props.user);
     userDetails[event.target.name] = event.target.value;
-    this.setState({ userDetails });
+    if(event.target.name == 'storeId') {
+      userDetails['departmentId'] = 0;
+      userDetails['teamId'] = 0;
+    }
+    if(event.target.name == 'departmentId') {
+      userDetails['teamId'] = 0;
+    }
+
     this.props.onUserDetailsChange(userDetails);
+  }
+
+  async onSave() {
+    switch(this.state.action) {
+      case 'edit':
+        await this.props.onEdit();
+        break;
+      case 'add':
+        await this.props.onAdd();
+        break;
+      default: break;  
+    }
+    this.context.router.history.push(`/admin/users`);
+    
   }
 
   render() {
@@ -48,17 +87,31 @@ export default class ManageUser extends React.PureComponent {
           <title>Manage User</title>
           <meta name="description" content="Dashboard page" />
         </Helmet>
-        <UserForm
-          userDetails={this.state.userDetails}
+        {(this.props.user.id || this.state.action =='add') && this.props.info && 
+          <UserForm
+          userDetails={this.props.user}
           handleChange={this.handleChange}
-          onSave={this.props.onSave}
+          onSave={this.onSave}
+          departments={this.props.departments}
+          teams={this.props.teams}
+          info={this.props.info}
+          action={this.state.action}
         />
+        }
       </div>
     );
   }
 }
 
 ManageUser.propTypes = {
-  onSave: PropTypes.func,
+  onEdit: PropTypes.func,
+  onAdd: PropTypes.func,
   onUserDetailsChange: PropTypes.func,
+  getUserById: PropTypes.func.isRequired,
+  getDepartmentsByStoreId: PropTypes.func.isRequired,
+  getTeamsByDepartmentId: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  departments: PropTypes.array,
+  teams: PropTypes.array,
+  info: PropTypes.object
 };

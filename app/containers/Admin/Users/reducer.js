@@ -1,31 +1,42 @@
 import { fromJS } from 'immutable';
 
-import { SIGN_IN, SIGN_IN_ERROR, CHANGE_USER_CREDENTIALS } from './constants';
+import { GET_USERS, GET_USERS_SUCCESS, GET_USERS_ERROR, ON_DELETE, ON_DELETE_ERROR, ON_DELETE_SUCCESS } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-  user_credentials: {
-    email: '',
-    password: ''
-  }
+  users: []
 });
 
-function authReducer(state = initialState, action) {
+function usersReducer(state = initialState, action) {
   switch (action.type) {
-    case SIGN_IN:
+    case GET_USERS:
       return state
-        .set('loading', true)
+        .set('loading', false)
+        .set('error', false);
+    case GET_USERS_SUCCESS:
+      return state
+        .set('loading', false)
         .set('error', false)
-        .set('auth_user', null);
-    case SIGN_IN_ERROR:
+        .set('users', action.users);
+    case GET_USERS_ERROR:
       return state
         .set('error', action.error)
         .set('loading', false);
-    case CHANGE_USER_CREDENTIALS:
-      return state.set('user_credentials', action.user);
+    case ON_DELETE:
+      return state
+        .set('loading', false)
+        .set('error', false);
+    case ON_DELETE_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', false)
+    case ON_DELETE_ERROR:
+      return state
+        .set('error', action.error)
+        .set('loading', false);
     default:
       return state;
   }
 }
 
-export default authReducer;
+export default usersReducer;

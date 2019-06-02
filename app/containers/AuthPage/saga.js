@@ -17,7 +17,7 @@ import { signInError } from './actions';
 export function* signIn() {
   // Select username from store
   const user = yield select(makeSelectUser());
-  const requestURL = 'http://localhost:8080/login';
+  const requestURL = 'http://localhost:9890/api/login';
   const requestOptions = {
     method: 'POST',
     body: JSON.stringify(user),

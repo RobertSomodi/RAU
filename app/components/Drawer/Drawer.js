@@ -31,7 +31,7 @@ class DrawerNav extends React.Component {
     return menu.map((item) => {
       if (item.submenu) {
         return (
-          <React.Fragment>
+          <React.Fragment key={item.order + item.name}>
             <ListItem key={item.order + item.name} button onClick={() => (this.props.handleSubmenuState(item.id))}>
               {(item.icon) && (
                 <ListItemIcon>

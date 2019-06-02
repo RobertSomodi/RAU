@@ -4,20 +4,14 @@
 
 import { createSelector } from 'reselect';
 
-const selectAuth = (state) => state.get('auth');
+const selectUsers = (state) => state.get('users');
 
-const makeSelectUser = () => createSelector(
-  selectAuth,
-  (authState) => authState.get('user_credentials')
-);
-
-const makeSelectAuthUser = () => createSelector(
-  selectAuth,
-  (authState) => authState.get('auth_user')
+const makeSelectUsers = () => createSelector(
+  selectUsers,
+  (usersState) => {let users = usersState.get('users'); return users.length ? users:[] }
 );
 
 export {
-  selectAuth,
-  makeSelectUser,
-  makeSelectAuthUser
+  selectUsers,
+  makeSelectUsers
 };

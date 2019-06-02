@@ -31,7 +31,7 @@ const App = () => (
       <Route exact path="/" component={authenticate(HomePage, 'user')} />
       <Route path="/unauthorized" component={Unauthorized} />
       <Route path="/authentication" component={AuthPage} />
-      <Route path="/admin" component={authenticate(Admin, 'admin')} />
+      <Route path="/admin" component={authenticate(Admin, 1)} />
       <Route path="" component={NotFoundPage} />
 
     </Switch>

@@ -22,7 +22,7 @@ export default class AuthPage extends React.PureComponent {
     super(props);
     this.state = {
       loginDetails: {
-        email: '',
+        username: '',
         password: ''
       }
     };
@@ -34,7 +34,7 @@ export default class AuthPage extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth_user) {
       localStorage.setItem('userInfo', JSON.stringify(nextProps.auth_user));
-      if (nextProps.auth_user.role === 'admin') {
+      if (nextProps.auth_user.data.roleId === 1) {
         this.context.router.history.push('/admin');
       } else {
         this.context.router.history.push('/');
