@@ -11,13 +11,7 @@ const makeSelectUser = () => createSelector(
   (authState) => authState.get('user_credentials')
 );
 
-const makeSelectAuthUser = () => createSelector(
-  selectAuth,
-  (authState) => authState.get('auth_user')
-);
-
 export {
   selectAuth,
-  makeSelectUser,
-  makeSelectAuthUser
+  makeSelectUser
 };

@@ -31,9 +31,10 @@ export default class AuthPage extends React.PureComponent {
 
   componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps.auth_user) {
       localStorage.setItem('userInfo', JSON.stringify(nextProps.auth_user));
+
       if (nextProps.auth_user.data.roleId === 1) {
         this.context.router.history.push('/admin');
       } else {

@@ -34,7 +34,7 @@ const makeSelectLocation = () => createSelector(
 
 const makeSelectAuthUser = () => createSelector(
   selectGlobal,
-  (globalState) => (globalState.get('auth_user').toJS())
+  (globalState) => (globalState.get('auth_user') ? globalState.get('auth_user').toJS() : null)
 );
 
 export {

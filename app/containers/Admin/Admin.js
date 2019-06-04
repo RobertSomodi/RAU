@@ -21,6 +21,8 @@ import Departments from 'containers/Admin/Departments';
 import Teams from 'containers/Admin/Teams';
 import Shifts from 'containers/Admin/Shifts';
 import Schedule from 'containers/Admin/Schedule';
+import ReportShiftFrequency from 'containers/Admin/ReportShiftFrequency';
+import ReportClocking from 'containers/Admin/ReportClocking';
 import ManageUser from 'containers/Admin/ManageUser';
 import ManageStore from 'containers/Admin/ManageStore';
 import ManagePosition from 'containers/Admin/ManagePosition';
@@ -125,6 +127,8 @@ class Admin extends React.PureComponent {
             <Route path={`${path}/shifts/edit/:id`} component={ManageShift} />
             <Route path={`${path}/shifts/view/:id`} component={ManageShift} />
             <Route path={`${path}/schedule`} component={Schedule} />
+            <Route exact path={`${path}/shift-frequency`} component={ReportShiftFrequency} />
+            <Route exact path={`${path}/clocking`} component={ReportClocking} />
           </Switch>
         </main>
       </div>

@@ -60,20 +60,58 @@ export const adminMenu = [
     ]
   },
   {
+    name: 'Reports',
+    path: 'reports',
+    order: 3,
+    position: 'top',
+    icon: 'assignment',
+    id: 3,
+    submenu: [
+      {
+        name: 'Shift frequency',
+        path: 'shift-frequency',
+        order: 1,
+        icon: 'chevron_right',
+        id: 31
+      },
+      {
+        name: 'Clocking',
+        path: 'clocking',
+        order: 2,
+        icon: 'chevron_right',
+        id: 32
+      },
+      // {
+      //   name: 'Hours worked',
+      //   path: 'hours-worked',
+      //   order: 3,
+      //   icon: 'chevron_right',
+      //   id: 33
+      // },
+      // {
+      //   name: 'Average clocking',
+      //   path: 'average-clocking',
+      //   order: 4,
+      //   icon: 'chevron_right',
+      //   id: 34
+      // }
+    ]
+  },
+  {
     name: 'Schedule',
     path: 'schedule',
-    order: 2,
+    order: 3,
     position: 'top',
     icon: 'event',
-    id: 2
+    id: 3
   },
   {
     name: 'Logout',
     path: 'logout',
-    order: 3,
+    order: 4,
     position: 'bottom',
     icon: 'power_settings_new',
-    id: 3
+    id: 4
   }
 ];
 
