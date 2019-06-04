@@ -30,12 +30,33 @@ export const adminMenu = [
         id: 12
       },
       {
-        name: 'Positions',
-        path: 'positions',
+        name: 'Departments',
+        path: 'departments',
         order: 3,
         icon: 'chevron_right',
         id: 13
-      }
+      },
+      {
+        name: 'Teams',
+        path: 'teams',
+        order: 4,
+        icon: 'chevron_right',
+        id: 14
+      },
+      {
+        name: 'Shifts',
+        path: 'shifts',
+        order: 5,
+        icon: 'chevron_right',
+        id: 15
+      },
+      {
+        name: 'Positions',
+        path: 'positions',
+        order: 6,
+        icon: 'chevron_right',
+        id: 16
+      },
     ]
   },
   {

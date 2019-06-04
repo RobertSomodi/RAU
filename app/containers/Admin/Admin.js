@@ -17,10 +17,16 @@ import DashboardPage from 'containers/DashboardPage';
 import Users from 'containers/Admin/Users';
 import Stores from 'containers/Admin/Stores';
 import Positions from 'containers/Admin/Positions';
-import Schedule from 'containers/Schedule';
+import Departments from 'containers/Admin/Departments';
+import Teams from 'containers/Admin/Teams';
+import Shifts from 'containers/Admin/Shifts';
+import Schedule from 'containers/Admin/Schedule';
 import ManageUser from 'containers/Admin/ManageUser';
 import ManageStore from 'containers/Admin/ManageStore';
 import ManagePosition from 'containers/Admin/ManagePosition';
+import ManageDepartment from 'containers/Admin/ManageDepartment';
+import ManageTeam from 'containers/Admin/ManageTeam';
+import ManageShift from 'containers/Admin/ManageShift';
 import { styles } from './styles';
 
 class Admin extends React.PureComponent {
@@ -106,6 +112,18 @@ class Admin extends React.PureComponent {
             <Route path={`${path}/positions/add/`} component={ManagePosition} />
             <Route path={`${path}/positions/edit/:id`} component={ManagePosition} />
             <Route path={`${path}/positions/view/:id`} component={ManagePosition} />
+            <Route exact path={`${path}/departments`} component={Departments} />
+            <Route path={`${path}/departments/add/`} component={ManageDepartment} />
+            <Route path={`${path}/departments/edit/:id`} component={ManageDepartment} />
+            <Route path={`${path}/departments/view/:id`} component={ManageDepartment} />
+            <Route exact path={`${path}/teams`} component={Teams} />
+            <Route path={`${path}/teams/add/`} component={ManageTeam} />
+            <Route path={`${path}/teams/edit/:id`} component={ManageTeam} />
+            <Route path={`${path}/teams/view/:id`} component={ManageTeam} />
+            <Route exact path={`${path}/shifts`} component={Shifts} />
+            <Route path={`${path}/shifts/add/`} component={ManageShift} />
+            <Route path={`${path}/shifts/edit/:id`} component={ManageShift} />
+            <Route path={`${path}/shifts/view/:id`} component={ManageShift} />
             <Route path={`${path}/schedule`} component={Schedule} />
           </Switch>
         </main>
