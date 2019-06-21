@@ -4,7 +4,6 @@ import { GET_DEPARTMENTS_BY_STORE_ID, GET_DEPARTMENTS_BY_STORE_ID_ERROR, GET_DEP
 
 // The initial state of the App
 const initialState = fromJS({
-  reportShiftFrequency: {},
   departments: [],
   searchOptions: {
     storeId: null,

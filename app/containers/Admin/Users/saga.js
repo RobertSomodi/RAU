@@ -1,6 +1,4 @@
-/**
- * Gets the repositories of the user from Github
- */
+
 
 import { call, put, select, takeLatest, all } from 'redux-saga/effects';
 import request from 'utils/request';
@@ -9,9 +7,6 @@ import { getUsersSuccess, getUsersError, onDeleteSuccess, onDeleteError } from '
 import { SIGN_IN, GET_USERS, ON_DELETE } from './constants';
 
 
-/**
- * Github repos request/response handler
- */
 export function* getUsers() {
   const user = yield select(makeSelectAuthUser());
   const filters = `${user.data.storeId}/${user.data.departmentId}`;
@@ -22,7 +17,6 @@ export function* getUsers() {
   };
 
   try {
-    // Call our request helper (see 'utils/request')
     const users = yield call(request, requestURL, requestOptions);
     yield put(getUsersSuccess(users));
   } catch (err) {
@@ -40,7 +34,6 @@ export function* deleteUser(data) {
   };
 
   try {
-    // Call our request helper (see 'utils/request')
     const data = yield call(request, requestURL, requestOptions);
     yield put(onDeleteSuccess(data));
   } catch (err) {

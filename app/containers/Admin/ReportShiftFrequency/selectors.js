@@ -18,7 +18,9 @@ const makeSelectDepartments = () => createSelector(
 
 const makeSelectReportShiftFrequency = () => createSelector(
   selectReportShiftFrequencys,
-  (reportShiftFrequencyState) => { const reportShiftFrequency = reportShiftFrequencyState.get('reportShiftFrequency'); return Object.entries(reportShiftFrequencyState).length > 0 ? reportShiftFrequency : {}; }
+  (reportShiftFrequencyState) => {
+    const reportShiftFrequency = reportShiftFrequencyState.get('reportShiftFrequency');
+    return  reportShiftFrequency }
 );
 
 export {

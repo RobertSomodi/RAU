@@ -1,10 +1,10 @@
 export const adminMenu = [
   {
-    name: 'Dashboard',
+    name: 'Schedule',
     path: '',
     order: 0,
     position: 'top',
-    icon: 'dashboard',
+    icon: 'event',
     id: 0
   },
   {
@@ -98,20 +98,12 @@ export const adminMenu = [
     ]
   },
   {
-    name: 'Schedule',
-    path: 'schedule',
-    order: 3,
-    position: 'top',
-    icon: 'event',
-    id: 3
-  },
-  {
     name: 'Logout',
     path: 'logout',
-    order: 4,
+    order: 3,
     position: 'bottom',
     icon: 'power_settings_new',
-    id: 4
+    id: 3
   }
 ];
 

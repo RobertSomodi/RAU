@@ -87,6 +87,7 @@ class ReportClocking extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props.reportClocking);
     if (this.props.info && Object.keys(this.props.info).length > 0 && this.props.info.stores) {
       return (
         <div>

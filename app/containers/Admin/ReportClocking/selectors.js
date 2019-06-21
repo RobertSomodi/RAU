@@ -18,7 +18,7 @@ const makeSelectDepartments = () => createSelector(
 
 const makeSelectReportClocking = () => createSelector(
   selectReportClockings,
-  (reportClockingState) => { const reportClocking = reportClockingState.get('reportClocking'); return reportClockingState.size > 0 ? reportClocking : {}; }
+  (reportClockingState) => { const reportClocking = reportClockingState.get('reportClocking'); return reportClocking; }
 );
 
 export {

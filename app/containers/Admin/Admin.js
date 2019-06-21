@@ -101,7 +101,8 @@ class Admin extends React.PureComponent {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Switch>
-            <Route exact path={`${path}`} component={DashboardPage} />
+            {/* <Route exact path={`${path}`} component={DashboardPage} /> */}
+            <Route exact path={`${path}/`} component={Schedule} />
             <Route exact path={`${path}/users`} component={Users} />
             <Route path={`${path}/users/add/`} component={ManageUser} />
             <Route path={`${path}/users/edit/:id`} component={ManageUser} />
@@ -126,7 +127,6 @@ class Admin extends React.PureComponent {
             <Route path={`${path}/shifts/add/`} component={ManageShift} />
             <Route path={`${path}/shifts/edit/:id`} component={ManageShift} />
             <Route path={`${path}/shifts/view/:id`} component={ManageShift} />
-            <Route path={`${path}/schedule`} component={Schedule} />
             <Route exact path={`${path}/shift-frequency`} component={ReportShiftFrequency} />
             <Route exact path={`${path}/clocking`} component={ReportClocking} />
           </Switch>

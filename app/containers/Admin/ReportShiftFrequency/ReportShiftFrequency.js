@@ -86,6 +86,7 @@ class ReportShiftFrequency extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props.reportShiftFrequency);
     if (this.props.info && Object.keys(this.props.info).length > 0 && this.props.info.stores) {
       return (
         <div>
@@ -101,7 +102,7 @@ class ReportShiftFrequency extends React.PureComponent {
             departments={this.props.departments}
             info={this.props.info}
           />
-          {this.props.reportShiftFrequency && Object.entries(this.props.reportShiftFrequency).length > 0 &&
+          {this.props.reportShiftFrequency && Object.keys(this.props.reportShiftFrequency).length > 0 &&
           <ReportTable
             rows={this.generateRows()}
             header={this.generateHeader()}
