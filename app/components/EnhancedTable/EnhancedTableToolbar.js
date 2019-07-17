@@ -1,17 +1,17 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import { toolbarStyles } from './toolbarStyles';
+import React from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import Tooltip from '@material-ui/core/Tooltip'
+import DeleteIcon from '@material-ui/icons/Delete'
+import FilterListIcon from '@material-ui/icons/FilterList'
+import { toolbarStyles } from './toolbarStyles'
 
-const EnhancedTableToolbar = (props) => {
-  const { numSelected, classes, tableName } = props;
+const EnhancedTableToolbar = props => {
+  const { numSelected, classes, tableName } = props
   return (
     <Toolbar
       className={classNames(classes.root, {
@@ -25,7 +25,7 @@ const EnhancedTableToolbar = (props) => {
           </Typography>
         ) : (
           <Typography variant="h6" id="tableTitle">
-              {tableName}
+            {tableName}
           </Typography>
         )}
       </div>
@@ -46,14 +46,13 @@ const EnhancedTableToolbar = (props) => {
         )}
       </div>
     </Toolbar>
-  );
-};
+  )
+}
 
 EnhancedTableToolbar.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
-  tableName: PropTypes.string
-};
+  tableName: PropTypes.string,
+}
 
-export default withStyles(toolbarStyles)(EnhancedTableToolbar);
-
+export default withStyles(toolbarStyles)(EnhancedTableToolbar)

@@ -4,10 +4,10 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import Authentication from '../../components/Authentication';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
+import Authentication from '../../components/Authentication'
 
 export default class AuthPage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -16,38 +16,38 @@ export default class AuthPage extends React.PureComponent {
    */
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
-  };
+    router: PropTypes.object.isRequired,
+  }
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loginDetails: {
         username: '',
-        password: ''
-      }
-    };
-    this.handleChange = this.handleChange.bind(this);
+        password: '',
+      },
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {}
 
   componentWillUpdate(nextProps) {
     if (nextProps.auth_user) {
-      localStorage.setItem('userInfo', JSON.stringify(nextProps.auth_user));
+      localStorage.setItem('userInfo', JSON.stringify(nextProps.auth_user))
 
       if (nextProps.auth_user.data.roleId === 1) {
-        this.context.router.history.push('/admin');
+        this.context.router.history.push('/admin')
       } else {
-        this.context.router.history.push('/');
+        this.context.router.history.push('/')
       }
     }
   }
 
-  handleChange = (event) => {
-    const loginDetails = Object.assign({}, this.state.loginDetails);
-    loginDetails[event.target.id] = event.target.value;
-    this.setState({ loginDetails });
-    this.props.onCredentialsChange(loginDetails);
+  handleChange = event => {
+    const loginDetails = Object.assign({}, this.state.loginDetails)
+    loginDetails[event.target.id] = event.target.value
+    this.setState({ loginDetails })
+    this.props.onCredentialsChange(loginDetails)
   }
 
   render() {
@@ -57,14 +57,18 @@ export default class AuthPage extends React.PureComponent {
           <title>Authentication</title>
           <meta name="description" content="Authentication page" />
         </Helmet>
-        <Authentication handleChange={this.handleChange} loginDetails={this.state.loginDetails} onLogin={this.props.onLogin} />
+        <Authentication
+          handleChange={this.handleChange}
+          loginDetails={this.state.loginDetails}
+          onLogin={this.props.onLogin}
+        />
       </div>
-    );
+    )
   }
 }
 
 AuthPage.propTypes = {
   onLogin: PropTypes.func,
   onCredentialsChange: PropTypes.func,
-  auth_user: PropTypes.object
-};
+  auth_user: PropTypes.object,
+}

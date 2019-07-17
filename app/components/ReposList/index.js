@@ -1,1 +1,1 @@
-export { default } from './ReposList';
+export { default } from './ReposList'

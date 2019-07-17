@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = theme => ({
   main: {
     width: '500px',
     display: 'block', // Fix IE 11 issue.
@@ -10,7 +10,8 @@ export const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flexStart',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit * 3}px`,
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -23,4 +24,4 @@ export const styles = (theme) => ({
   submit: {
     marginTop: theme.spacing.unit * 3,
   },
-});
+})

@@ -2,10 +2,8 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectDepartments = (state) => state.get('departments');
+const selectDepartments = state => state.get('departments')
 
-export {
-  selectDepartments
-};
+export { selectDepartments }

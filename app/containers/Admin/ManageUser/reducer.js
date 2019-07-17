@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
 import {
   CHANGE_USER_DETAILS,
@@ -16,7 +16,8 @@ import {
   ON_EDIT_ERROR,
   ON_ADD,
   ON_ADD_SUCCESS,
-  ON_ADD_ERROR} from './constants';
+  ON_ADD_ERROR,
+} from './constants'
 
 // The initial state of the App
 const initialState = fromJS({
@@ -30,84 +31,64 @@ const initialState = fromJS({
     lastName: null,
     weeklyHours: null,
     daysOff: null,
-    recoveryHours: null
+    recoveryHours: null,
   },
   departments: [],
-  teams: []
-});
+  teams: [],
+})
 
 function manageUserReducer(state = initialState, action) {
   switch (action.type) {
     case ON_EDIT:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case ON_EDIT_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('user', action.user);
+        .set('user', action.user)
     case ON_EDIT_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case ON_ADD:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case ON_ADD_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('user', action.user);
+        .set('user', action.user)
     case ON_ADD_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case CHANGE_USER_DETAILS:
-      return state.set('user', action.user);
+      return state.set('user', action.user)
     case GET_USER_BY_ID:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case GET_USER_BY_ID_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('user', action.user);
+        .set('user', action.user)
     case GET_USER_BY_ID_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case GET_DEPARTMENTS_BY_STORE_ID:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case GET_DEPARTMENTS_BY_STORE_ID_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('departments', action.departments);
+        .set('departments', action.departments)
     case GET_DEPARTMENTS_BY_STORE_ID_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case GET_TEAMS_BY_DEPARTMENT_ID:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case GET_TEAMS_BY_DEPARTMENT_ID_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('teams', action.teams);
+        .set('teams', action.teams)
     case GET_TEAMS_BY_DEPARTMENT_ID_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     default:
-      return state;
+      return state
   }
 }
 
-export default manageUserReducer;
+export default manageUserReducer

@@ -1,4 +1,3 @@
-
 import {
   GET_DEPARTMENTS_BY_STORE_ID,
   GET_DEPARTMENTS_BY_STORE_ID_SUCCESS,
@@ -6,53 +5,53 @@ import {
   CHANGE_SEARCH_OPTIONS,
   GET_REPORT_SHIFT_FREQUENCY,
   GET_REPORT_SHIFT_FREQUENCY_ERROR,
-  GET_REPORT_SHIFT_FREQUENCY_SUCCESS
-} from './constants';
+  GET_REPORT_SHIFT_FREQUENCY_SUCCESS,
+} from './constants'
 
 export function onSearchOptionsChange(searchOptions) {
   return {
     type: CHANGE_SEARCH_OPTIONS,
-    searchOptions
-  };
+    searchOptions,
+  }
 }
 
 export function getDepartmentsByStoreId(id) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID,
-    id
-  };
+    id,
+  }
 }
 
 export function getDepartmentsByStoreIdError(error) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function getDepartmentsByStoreIdSuccess(departments) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID_SUCCESS,
-    departments
-  };
+    departments,
+  }
 }
 
 export function getReportShiftFrequency() {
   return {
-    type: GET_REPORT_SHIFT_FREQUENCY
-  };
+    type: GET_REPORT_SHIFT_FREQUENCY,
+  }
 }
 
 export function getReportShiftFrequencyError(error) {
   return {
     type: GET_REPORT_SHIFT_FREQUENCY_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function getReportShiftFrequencySuccess(schedule) {
   return {
     type: GET_REPORT_SHIFT_FREQUENCY_SUCCESS,
-    schedule
-  };
+    schedule,
+  }
 }

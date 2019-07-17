@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
@@ -9,4 +9,4 @@ export const styles = (theme) => ({
   tableWrapper: {
     overflowX: 'auto',
   },
-});
+})

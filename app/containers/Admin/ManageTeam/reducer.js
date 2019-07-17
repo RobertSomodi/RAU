@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
 import {
   CHANGE_TEAM_DETAILS,
@@ -7,49 +7,42 @@ import {
   ON_EDIT_ERROR,
   ON_ADD,
   ON_ADD_SUCCESS,
-  ON_ADD_ERROR} from './constants';
+  ON_ADD_ERROR,
+} from './constants'
 
 // The initial state of the App
 const initialState = fromJS({
   team: {
     id: null,
-    name:null
-  }
-});
+    name: null,
+  },
+})
 
 function manageUserReducer(state = initialState, action) {
   switch (action.type) {
     case ON_EDIT:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case ON_EDIT_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('team', action.team);
+        .set('team', action.team)
     case ON_EDIT_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case ON_ADD:
-      return state
-        .set('loading', false)
-        .set('error', false);
+      return state.set('loading', false).set('error', false)
     case ON_ADD_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('team', action.team);
+        .set('team', action.team)
     case ON_ADD_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case CHANGE_TEAM_DETAILS:
-      return state.set('team', action.team);
+      return state.set('team', action.team)
     default:
-      return state;
+      return state
   }
 }
 
-export default manageUserReducer;
+export default manageUserReducer

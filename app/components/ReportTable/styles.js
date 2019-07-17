@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = theme => ({
   main: {
     width: 'auto',
     display: 'block', // Fix IE 11 issue.
@@ -11,7 +11,8 @@ export const styles = (theme) => ({
     flexDirection: 'column',
     alignItems: 'flexStart',
     overflowX: 'auto',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit * 3}px`,
   },
   table: {
     minWidth: 650,
@@ -24,23 +25,23 @@ export const styles = (theme) => ({
     padding: '10px',
     height: '60px',
     borderRight: '1px solid rgba(224, 224, 224, 1)',
-    fontSize: '16px'
+    fontSize: '16px',
   },
   teamCell: {
     height: '40px!important',
     borderRight: 'none!important',
     color: '#ffffff',
     fontWeight: 'bold',
-    backgroundColor: '#2196f3!important'
+    backgroundColor: '#2196f3!important',
   },
   shift: {
     color: '#ffffff',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   teamRow: {
-    backgroundColor: '#2196f3'
+    backgroundColor: '#2196f3',
   },
   shiftDivider: {
-    borderTop: '1px solid rgba(255,255,255, 1'
-  }
-});
+    borderTop: '1px solid rgba(255,255,255, 1',
+  },
+})

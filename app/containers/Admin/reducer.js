@@ -1,16 +1,23 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
-import { SIGN_IN, SIGN_IN_ERROR, CHANGE_USER_CREDENTIALS, GET_INFO, GET_INFO_SUCCESS, GET_INFO_ERROR } from './constants';
+import {
+  SIGN_IN,
+  SIGN_IN_ERROR,
+  CHANGE_USER_CREDENTIALS,
+  GET_INFO,
+  GET_INFO_SUCCESS,
+  GET_INFO_ERROR,
+} from './constants'
 
 // The initial state of the App
 const initialState = fromJS({
   user_credentials: {
     email: '',
-    password: ''
+    password: '',
   },
   menu_state: {},
-  info:{}
-});
+  info: {},
+})
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
@@ -18,30 +25,26 @@ function authReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .set('auth_user', null);
+        .set('auth_user', null)
     case SIGN_IN_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case CHANGE_USER_CREDENTIALS:
-      return state.set('user_credentials', action.user);
+      return state.set('user_credentials', action.user)
     case GET_INFO:
       return state
         .set('loading', true)
         .set('error', false)
-        .set('info', {});
+        .set('info', {})
     case GET_INFO_SUCCESS:
       return state
         .set('loading', false)
         .set('error', false)
-        .set('info', action.info);
+        .set('info', action.info)
     case GET_INFO_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     default:
-      return state;
+      return state
   }
 }
 
-export default authReducer;
+export default authReducer

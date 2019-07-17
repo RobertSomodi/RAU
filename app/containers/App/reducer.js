@@ -10,7 +10,7 @@
  *   return state.set('yourStateVariable', true);
  */
 
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
 import {
   LOAD_REPOS_SUCCESS,
@@ -18,7 +18,7 @@ import {
   LOAD_REPOS_ERROR,
   SIGN_IN_SUCCESS,
   LOGOUT,
-} from './constants';
+} from './constants'
 
 // The initial state of the App
 const initialState = fromJS({
@@ -28,8 +28,8 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
-  auth_user: JSON.parse(localStorage.getItem('userInfo')) || null
-});
+  auth_user: JSON.parse(localStorage.getItem('userInfo')) || null,
+})
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
@@ -37,23 +37,21 @@ function appReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .setIn(['userData', 'repositories'], false);
+        .setIn(['userData', 'repositories'], false)
     case LOAD_REPOS_SUCCESS:
       return state
         .setIn(['userData', 'repositories'], action.repos)
         .set('loading', false)
-        .set('currentUser', action.username);
+        .set('currentUser', action.username)
     case LOAD_REPOS_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case SIGN_IN_SUCCESS:
-      return state.set('auth_user', fromJS(action.user));
+      return state.set('auth_user', fromJS(action.user))
     case LOGOUT:
-      return state.set('auth_user', null);
+      return state.set('auth_user', null)
     default:
-      return state;
+      return state
   }
 }
 
-export default appReducer;
+export default appReducer

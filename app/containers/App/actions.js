@@ -20,22 +20,21 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
   SIGN_IN_SUCCESS,
-  LOGOUT
-} from './constants';
-
+  LOGOUT,
+} from './constants'
 
 /**
-   * Dispatched when the repositories are loaded by the request saga
-   *
-   * @param  {object} user The current authenticated user
-   *
-   * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
-   */
+ * Dispatched when the repositories are loaded by the request saga
+ *
+ * @param  {object} user The current authenticated user
+ *
+ * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
+ */
 export function signInSuccess(user) {
   return {
     type: SIGN_IN_SUCCESS,
     user,
-  };
+  }
 }
 
 /**
@@ -46,7 +45,7 @@ export function signInSuccess(user) {
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
-  };
+  }
 }
 
 /**
@@ -62,7 +61,7 @@ export function reposLoaded(repos, username) {
     type: LOAD_REPOS_SUCCESS,
     repos,
     username,
-  };
+  }
 }
 
 /**
@@ -76,9 +75,9 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
     error,
-  };
+  }
 }
 
 export function logout() {
-  return { type: LOGOUT };
+  return { type: LOGOUT }
 }

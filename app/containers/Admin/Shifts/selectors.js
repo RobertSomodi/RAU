@@ -2,10 +2,8 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectShifts = (state) => state.get('shifts');
+const selectShifts = state => state.get('shifts')
 
-export {
-  selectShifts
-};
+export { selectShifts }

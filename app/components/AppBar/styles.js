@@ -1,6 +1,6 @@
-const drawerWidth = 240;
+const drawerWidth = 240
 
-export const styles = (theme) => ({
+export const styles = theme => ({
   root: {
     display: 'flex',
   },
@@ -38,5 +38,5 @@ export const styles = (theme) => ({
   },
   title: {
     flexGrow: 1,
-  }
-});
+  },
+})

@@ -1,1 +1,1 @@
-export { default } from './DepartmentForm';
+export { default } from './DepartmentForm'

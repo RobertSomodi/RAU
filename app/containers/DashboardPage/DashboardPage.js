@@ -4,9 +4,9 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
 export default class DashboardPage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -15,11 +15,11 @@ export default class DashboardPage extends React.PureComponent {
    */
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
-  };
+    router: PropTypes.object.isRequired,
+  }
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   componentDidMount() {}
@@ -33,6 +33,6 @@ export default class DashboardPage extends React.PureComponent {
         </Helmet>
         <h1>Dashboard Page</h1>
       </div>
-    );
+    )
   }
 }

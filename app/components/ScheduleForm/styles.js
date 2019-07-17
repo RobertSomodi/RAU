@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = theme => ({
   main: {
     width: 'auto',
     display: 'block', // Fix IE 11 issue.
@@ -9,8 +9,11 @@ export const styles = (theme) => ({
     marginTop: theme.spacing.unit * 8,
     display: 'flex',
     flexDirection: 'column',
+    flexGrow: 1,
     alignItems: 'flexStart',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    height: '120px',
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit * 3}px`,
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -24,6 +27,9 @@ export const styles = (theme) => ({
     marginTop: theme.spacing.unit * 3,
   },
   formControl: {
-    marginRight: theme.spacing.unit * 3
-  }
-});
+    width: '100%',
+  },
+  gridItem: {
+    padding: `0 ${theme.spacing.unit * 1}px`,
+  },
+})

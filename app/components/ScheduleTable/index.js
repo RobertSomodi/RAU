@@ -1,1 +1,1 @@
-export { default } from './ScheduleTable';
+export { default } from './ScheduleTable'

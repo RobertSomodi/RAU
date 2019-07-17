@@ -1,4 +1,3 @@
-
 import {
   GET_DEPARTMENTS_BY_STORE_ID,
   GET_DEPARTMENTS_BY_STORE_ID_SUCCESS,
@@ -6,53 +5,53 @@ import {
   CHANGE_SEARCH_OPTIONS,
   GET_REPORT_CLOCKING,
   GET_REPORT_CLOCKING_ERROR,
-  GET_REPORT_CLOCKING_SUCCESS
-} from './constants';
+  GET_REPORT_CLOCKING_SUCCESS,
+} from './constants'
 
 export function onSearchOptionsChange(searchOptions) {
   return {
     type: CHANGE_SEARCH_OPTIONS,
-    searchOptions
-  };
+    searchOptions,
+  }
 }
 
 export function getDepartmentsByStoreId(id) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID,
-    id
-  };
+    id,
+  }
 }
 
 export function getDepartmentsByStoreIdError(error) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function getDepartmentsByStoreIdSuccess(departments) {
   return {
     type: GET_DEPARTMENTS_BY_STORE_ID_SUCCESS,
-    departments
-  };
+    departments,
+  }
 }
 
 export function getReportClocking() {
   return {
-    type: GET_REPORT_CLOCKING
-  };
+    type: GET_REPORT_CLOCKING,
+  }
 }
 
 export function getReportClockingError(error) {
   return {
     type: GET_REPORT_CLOCKING_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function getReportClockingSuccess(schedule) {
   return {
     type: GET_REPORT_CLOCKING_SUCCESS,
-    schedule
-  };
+    schedule,
+  }
 }

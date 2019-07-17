@@ -2,28 +2,37 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectReportClockings = (state) => state.get('reportClocking');
+const selectReportClockings = state => state.get('reportClocking')
 
-const makeSelectSearchOptions = () => createSelector(
-  selectReportClockings,
-  (scheduleState) => scheduleState.get('searchOptions')
-);
+const makeSelectSearchOptions = () =>
+  createSelector(
+    selectReportClockings,
+    scheduleState => scheduleState.get('searchOptions')
+  )
 
-const makeSelectDepartments = () => createSelector(
-  selectReportClockings,
-  (reportClockingState) => { const departments = reportClockingState.get('departments'); return departments.length ? departments : []; }
-);
+const makeSelectDepartments = () =>
+  createSelector(
+    selectReportClockings,
+    reportClockingState => {
+      const departments = reportClockingState.get('departments')
+      return departments.length ? departments : []
+    }
+  )
 
-const makeSelectReportClocking = () => createSelector(
-  selectReportClockings,
-  (reportClockingState) => { const reportClocking = reportClockingState.get('reportClocking'); return reportClocking; }
-);
+const makeSelectReportClocking = () =>
+  createSelector(
+    selectReportClockings,
+    reportClockingState => {
+      const reportClocking = reportClockingState.get('reportClocking')
+      return reportClocking
+    }
+  )
 
 export {
   selectReportClockings,
   makeSelectDepartments,
   makeSelectSearchOptions,
-  makeSelectReportClocking
-};
+  makeSelectReportClocking,
+}

@@ -2,10 +2,8 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectTeams = (state) => state.get('teams');
+const selectTeams = state => state.get('teams')
 
-export {
-  selectTeams
-};
+export { selectTeams }

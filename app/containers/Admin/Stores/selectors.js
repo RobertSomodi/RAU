@@ -2,10 +2,8 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectStores = (state) => state.get('stores');
+const selectStores = state => state.get('stores')
 
-export {
-  selectStores
-};
+export { selectStores }

@@ -1,1 +1,1 @@
-export { default } from './ScheduleForm';
+export { default } from './ScheduleForm'

@@ -1,25 +1,25 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
-import homeReducer from '../reducer';
-import { changeUsername } from '../actions';
+import homeReducer from '../reducer'
+import { changeUsername } from '../actions'
 
 describe('homeReducer', () => {
-  let state;
+  let state
   beforeEach(() => {
     state = fromJS({
-      username: ''
-    });
-  });
+      username: '',
+    })
+  })
 
   it('should return the initial state', () => {
-    const expectedResult = state;
-    expect(homeReducer(undefined, {})).toEqual(expectedResult);
-  });
+    const expectedResult = state
+    expect(homeReducer(undefined, {})).toEqual(expectedResult)
+  })
 
   it('should handle the changeUsername action correctly', () => {
-    const fixture = 'flexdinesh';
-    const expectedResult = state.set('username', fixture);
+    const fixture = 'flexdinesh'
+    const expectedResult = state.set('username', fixture)
 
-    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult);
-  });
-});
+    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult)
+  })
+})

@@ -1,14 +1,14 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 
-import { SIGN_IN, SIGN_IN_ERROR, CHANGE_USER_CREDENTIALS } from './constants';
+import { SIGN_IN, SIGN_IN_ERROR, CHANGE_USER_CREDENTIALS } from './constants'
 
 // The initial state of the App
 const initialState = fromJS({
   user_credentials: {
     username: '',
-    password: ''
-  }
-});
+    password: '',
+  },
+})
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
@@ -16,16 +16,14 @@ function authReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .set('auth_user', null);
+        .set('auth_user', null)
     case SIGN_IN_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+      return state.set('error', action.error).set('loading', false)
     case CHANGE_USER_CREDENTIALS:
-      return state.set('user_credentials', action.user);
+      return state.set('user_credentials', action.user)
     default:
-      return state;
+      return state
   }
 }
 
-export default authReducer;
+export default authReducer

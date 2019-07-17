@@ -2,17 +2,14 @@
  * AuthPage selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectManageShift = (state) => state.get('manage_shift');
+const selectManageShift = state => state.get('manage_shift')
 
-const makeSelectShift = () => createSelector(
-  selectManageShift,
-  (manageShiftState) => manageShiftState.get('shift')
-);
+const makeSelectShift = () =>
+  createSelector(
+    selectManageShift,
+    manageShiftState => manageShiftState.get('shift')
+  )
 
-
-export {
-  selectManageShift,
-  makeSelectShift,
-};
+export { selectManageShift, makeSelectShift }

@@ -1,4 +1,3 @@
-
 import {
   CHANGE_STORE_DETAILS,
   ON_EDIT,
@@ -6,53 +5,52 @@ import {
   ON_EDIT_SUCCESS,
   ON_ADD,
   ON_ADD_SUCCESS,
-  ON_ADD_ERROR
-} from './constants';
+  ON_ADD_ERROR,
+} from './constants'
 
 export function onStoreDetailsChange(store) {
   return {
     type: CHANGE_STORE_DETAILS,
-    store
-  };
+    store,
+  }
 }
 
 export function onEdit() {
   return {
-    type: ON_EDIT
-  };
+    type: ON_EDIT,
+  }
 }
 
 export function onEditError(error) {
   return {
     type: ON_EDIT_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function onEditSuccess(store) {
   return {
     type: ON_EDIT_SUCCESS,
-    store
-  };
+    store,
+  }
 }
 
 export function onAdd() {
   return {
-    type: ON_ADD
-  };
+    type: ON_ADD,
+  }
 }
 
 export function onAddError(error) {
   return {
     type: ON_ADD_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function onAddSuccess(store) {
   return {
     type: ON_ADD_SUCCESS,
-    store
-  };
+    store,
+  }
 }
-

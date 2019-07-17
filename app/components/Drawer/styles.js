@@ -1,10 +1,10 @@
-const drawerWidth = 240;
+const drawerWidth = 240
 
-export const styles = (theme) => ({
+export const styles = theme => ({
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
@@ -44,16 +44,16 @@ export const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 2,
   },
   menuWrapTop: {
-    flex: '1 1 auto'
+    flex: '1 1 auto',
   },
   menuWrapBottom: {
-    flex: '0 1 auto'
+    flex: '0 1 auto',
   },
   collapse: {
-    backgroundColor: 'rgba(0,0,0,0.12)'
+    backgroundColor: 'rgba(0,0,0,0.12)',
   },
   list: {
     paddingTop: 0,
-    paddingBottom: 0
-  }
-});
+    paddingBottom: 0,
+  },
+})

@@ -1,1 +1,1 @@
-export { default } from './PositionForm';
+export { default } from './PositionForm'

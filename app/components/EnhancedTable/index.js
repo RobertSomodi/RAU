@@ -1,1 +1,1 @@
-export { default } from './EnhancedTable';
+export { default } from './EnhancedTable'

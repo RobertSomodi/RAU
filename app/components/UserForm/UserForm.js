@@ -1,28 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import withStyles from '@material-ui/core/styles/withStyles'
 
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { styles } from './styles';
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import FormControl from '@material-ui/core/FormControl'
+import Grid from '@material-ui/core/Grid'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import { styles } from './styles'
 
-const UserForm = (props) => {
+const UserForm = props => {
   const {
-    userDetails, classes, handleChange, onSave, departments, teams, info, action
-  } = props;
-  const getOptions = (options,key)=> {
-    if(options && options.length) {
-      return options.map((option) => {
-        return (<MenuItem key={option.id+key} value={option.id}>{option.name}</MenuItem>);
-      });
+    userDetails,
+    classes,
+    handleChange,
+    onSave,
+    departments,
+    teams,
+    info,
+    action,
+  } = props
+  const getOptions = (options, key) => {
+    if (options && options.length) {
+      return options.map(option => {
+        return (
+          <MenuItem key={option.id + key} value={option.id}>
+            {option.name}
+          </MenuItem>
+        )
+      })
     }
   }
   return (
@@ -30,10 +41,21 @@ const UserForm = (props) => {
       <CssBaseline />
       <Paper className={classes.paper}>
         <Typography component="h1" variant="h5">
-            Manage User
+          Manage User
         </Typography>
-        <form className={classes.form} onSubmit={(e) => { e.preventDefault(); onSave(); }}>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+        <form
+          className={classes.form}
+          onSubmit={e => {
+            e.preventDefault()
+            onSave()
+          }}
+        >
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="firstName">First Name</InputLabel>
             <Input
               id="firstName"
@@ -44,7 +66,12 @@ const UserForm = (props) => {
               onChange={handleChange}
             />
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="lastName">Last Name</InputLabel>
             <Input
               name="lastName"
@@ -54,7 +81,12 @@ const UserForm = (props) => {
               onChange={handleChange}
             />
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="roleId">Role</InputLabel>
             <Select
               value={userDetails.roleId || 0}
@@ -64,42 +96,62 @@ const UserForm = (props) => {
                 id: 'roleId',
               }}
             >
-              <MenuItem disabled value={0}>NONE</MenuItem>
+              <MenuItem disabled value={0}>
+                NONE
+              </MenuItem>
               {getOptions(info.roles, 'roles')}
             </Select>
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="positionId">Position</InputLabel>
             <Select
-              value={userDetails.positionId  || 0}
+              value={userDetails.positionId || 0}
               onChange={handleChange}
               inputProps={{
                 name: 'positionId',
                 id: 'positionId',
               }}
             >
-              <MenuItem disabled value={0}>NONE</MenuItem>
+              <MenuItem disabled value={0}>
+                NONE
+              </MenuItem>
               {getOptions(info.positions, 'positions')}
             </Select>
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="storeId">Store</InputLabel>
             <Select
-              value={userDetails.storeId  || 0}
+              value={userDetails.storeId || 0}
               onChange={handleChange}
               inputProps={{
                 name: 'storeId',
                 id: 'storeId',
               }}
             >
-              <MenuItem disabled value={0}>NONE</MenuItem>
+              <MenuItem disabled value={0}>
+                NONE
+              </MenuItem>
               {getOptions(info.stores, 'stores')}
             </Select>
           </FormControl>
-          <FormControl margin="normal" disabled={!departments.length || action == 'view'} fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={!departments.length || action == 'view'}
+            fullWidth
+          >
             <InputLabel htmlFor="departmentId">Department</InputLabel>
             <Select
-              value={userDetails.departmentId  || 0}
+              value={userDetails.departmentId || 0}
               onChange={handleChange}
               inputProps={{
                 name: 'departmentId',
@@ -110,10 +162,14 @@ const UserForm = (props) => {
               {getOptions(departments, 'departments')}
             </Select>
           </FormControl>
-          <FormControl margin="normal" disabled={!teams.length || action == 'view'} fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={!teams.length || action == 'view'}
+            fullWidth
+          >
             <InputLabel htmlFor="teamId">Team</InputLabel>
             <Select
-              value={userDetails.teamId  || 0}
+              value={userDetails.teamId || 0}
               onChange={handleChange}
               inputProps={{
                 name: 'teamId',
@@ -124,7 +180,12 @@ const UserForm = (props) => {
               {getOptions(teams, 'teams')}
             </Select>
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="weeklyHours">Weekly Hours</InputLabel>
             <Input
               name="weeklyHours"
@@ -135,7 +196,12 @@ const UserForm = (props) => {
               onChange={handleChange}
             />
           </FormControl>
-          <FormControl margin="normal" disabled={action == 'view'} required fullWidth>
+          <FormControl
+            margin="normal"
+            disabled={action == 'view'}
+            required
+            fullWidth
+          >
             <InputLabel htmlFor="daysOff">Days Off</InputLabel>
             <Input
               name="daysOff"
@@ -146,7 +212,7 @@ const UserForm = (props) => {
               onChange={handleChange}
             />
           </FormControl>
-          {action=='add' &&
+          {action == 'add' && (
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input
@@ -158,23 +224,23 @@ const UserForm = (props) => {
                 onChange={handleChange}
               />
             </FormControl>
-          }
-          {action!='view' &&
+          )}
+          {action != 'view' && (
             <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
             >
               Save
             </Button>
-          }
-          
+          )}
         </form>
       </Paper>
-    </main>);
-};
+    </main>
+  )
+}
 
 UserForm.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -184,7 +250,7 @@ UserForm.propTypes = {
   departments: PropTypes.array,
   teams: PropTypes.array,
   info: PropTypes.object,
-  action: PropTypes.string.isRequired
-};
+  action: PropTypes.string.isRequired,
+}
 
-export default withStyles(styles)(UserForm);
+export default withStyles(styles)(UserForm)

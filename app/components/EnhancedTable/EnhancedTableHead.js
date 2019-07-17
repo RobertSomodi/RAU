@@ -1,33 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Tooltip from '@material-ui/core/Tooltip';
+import React from 'react'
+import PropTypes from 'prop-types'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableSortLabel from '@material-ui/core/TableSortLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import Tooltip from '@material-ui/core/Tooltip'
 
 class EnhancedTableHead extends React.Component {
-    createSortHandler = (property) => (event) => {
-      this.props.onRequestSort(event, property);
-    };
+  createSortHandler = property => event => {
+    this.props.onRequestSort(event, property)
+  }
 
-    render() {
-      const {
-        onSelectAllClick, order, orderBy, numSelected, rowCount, rows
-      } = this.props;
+  render() {
+    const {
+      onSelectAllClick,
+      order,
+      orderBy,
+      numSelected,
+      rowCount,
+      rows,
+    } = this.props
 
-      return (
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                indeterminate={numSelected > 0 && numSelected < rowCount}
-                checked={numSelected === rowCount}
-                onChange={onSelectAllClick}
-              />
-            </TableCell>
-            {rows.map((row) => (
+    return (
+      <TableHead>
+        <TableRow>
+          <TableCell padding="checkbox">
+            <Checkbox
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={numSelected === rowCount}
+              onChange={onSelectAllClick}
+            />
+          </TableCell>
+          {rows.map(
+            row => (
               <TableCell
                 key={row.id}
                 align={row.numeric ? 'right' : 'left'}
@@ -48,14 +54,16 @@ class EnhancedTableHead extends React.Component {
                   </TableSortLabel>
                 </Tooltip>
               </TableCell>
-            ), this)}
-          </TableRow>
-        </TableHead>
-      );
-    }
+            ),
+            this
+          )}
+        </TableRow>
+      </TableHead>
+    )
+  }
 }
 
-export default EnhancedTableHead;
+export default EnhancedTableHead
 
 EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
@@ -64,6 +72,5 @@ EnhancedTableHead.propTypes = {
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
-  rows: PropTypes.array
-};
-
+  rows: PropTypes.array,
+}

@@ -5,7 +5,7 @@ export const adminMenu = [
     order: 0,
     position: 'top',
     icon: 'event',
-    id: 0
+    id: 0,
   },
   {
     name: 'Manage',
@@ -20,44 +20,44 @@ export const adminMenu = [
         path: 'users',
         order: 1,
         icon: 'chevron_right',
-        id: 11
+        id: 11,
       },
       {
         name: 'Stores',
         path: 'stores',
         order: 2,
         icon: 'chevron_right',
-        id: 12
+        id: 12,
       },
       {
         name: 'Departments',
         path: 'departments',
         order: 3,
         icon: 'chevron_right',
-        id: 13
+        id: 13,
       },
       {
         name: 'Teams',
         path: 'teams',
         order: 4,
         icon: 'chevron_right',
-        id: 14
+        id: 14,
       },
       {
         name: 'Shifts',
         path: 'shifts',
         order: 5,
         icon: 'chevron_right',
-        id: 15
+        id: 15,
       },
       {
         name: 'Positions',
         path: 'positions',
         order: 6,
         icon: 'chevron_right',
-        id: 16
+        id: 16,
       },
-    ]
+    ],
   },
   {
     name: 'Reports',
@@ -72,14 +72,14 @@ export const adminMenu = [
         path: 'shift-frequency',
         order: 1,
         icon: 'chevron_right',
-        id: 31
+        id: 31,
       },
       {
         name: 'Clocking',
         path: 'clocking',
         order: 2,
         icon: 'chevron_right',
-        id: 32
+        id: 32,
       },
       // {
       //   name: 'Hours worked',
@@ -95,7 +95,7 @@ export const adminMenu = [
       //   icon: 'chevron_right',
       //   id: 34
       // }
-    ]
+    ],
   },
   {
     name: 'Logout',
@@ -103,22 +103,25 @@ export const adminMenu = [
     order: 3,
     position: 'bottom',
     icon: 'power_settings_new',
-    id: 3
-  }
-];
+    id: 3,
+  },
+]
 
 export const userMenu = [
   {
-    name: 'Dashboard',
+    name: 'Schedule',
     path: '',
     order: 0,
-    position: 'top'
+    position: 'top',
+    icon: 'event',
+    id: 0,
   },
   {
     name: 'Logout',
-    path: null,
-    order: 1,
-    position: 'bottom'
-  }
-];
-
+    path: 'logout',
+    order: 3,
+    position: 'bottom',
+    icon: 'power_settings_new',
+    id: 3,
+  },
+]
